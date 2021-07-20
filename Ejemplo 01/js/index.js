@@ -45,7 +45,7 @@ let ingresoEdad   = prompt("Ingresar edad");
 let mensaje3   = "Hola Coder";
 
 // MOSTRAR SALIDAS
-alert(mensaje3)
+alert(mensaje3);
 console.log(ingresoNombre);
 console.log(ingresoEdad);
 
