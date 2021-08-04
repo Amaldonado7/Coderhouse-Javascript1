@@ -22,9 +22,9 @@
 
 // Ejemplo
 // function Persona(parametro1, parametro2, parametro3) {
-//   this.propiedad1 = parametro1;
-//   this.propiedad2 = parametro2; 
-//   this.propiedad3 = parametro3;
+//   this.nombre = parametro1;
+//   this.apellido = parametro2; 
+//   this.edad = parametro3;
 // }
 
 
@@ -34,10 +34,10 @@
 // console.log(persona1, persona2);
 
 // Otro ejemplo quizas mas claro
-// function Persona(texto) {
-//   this.nombre = texto.nombre;
-//   this.apellido = texto.apellido;
-//   this.edad = texto.edad;
+// function Persona(parametro) {
+//   this.nombre = parametro.nombre;
+//   this.apellido = parametro.apellido;
+//   this.edad = parametro.edad;
 // }
 
 // const persona1 = new Persona({nombre: "Homero", apellido: "Simpsons", edad: 50});
@@ -118,13 +118,14 @@
 //   this.edad   = edad;
 //   this.calle  = calle;
 //   this.hablar = function(){ console.log("HOLA SOY "+ this.nombre)} // agregamos metodos
-  
+//   this.despedir = function(){ console.log("Adios, me voy" + "Soy" + " " + this.nombre)}
 // }
 
 // const persona1 = new Persona("Homero", 39, "Av. Siempreviva 742");
 // const persona2 = new Persona("Marge", 36, "Av. Siempreviva 742");
 // persona1.hablar();
 // persona2.hablar();
+// persona2.despedir();
 
 
 // // Es lo mismo que hacer esto, Aca estoy transformando nuestro objeto en una clase (Hace que nuestro codigo sea mas ordenado)
@@ -140,6 +141,7 @@
 //   hablar() {
 //     console.log("HOLA SOY "+ this.nombre);
 //   }
+
 // }
 
 // const persona1 = new Persona("Homero", 39, "Av. Siempreviva 742");
@@ -151,9 +153,9 @@
 
 const persona1 = { nombre: "Homero", edad: 39, calle: "Av. Siempreviva 742"};
 //devuelve true porque la clave "nombre" existe en el objeto persona1
-console.log( "nombre" in persona1);
-//devuelve false porque la clave "origen" no existe en el objeto persona1
-console.log( "origen" in persona1);
+// console.log( "nombre" in persona1);
+// //devuelve false porque la clave "origen" no existe en el objeto persona1
+// console.log( "origen" in persona1);
 
 for (const valores in persona1) { // Me itera todas las propiedades de mi objeto persona1
   console.log(persona1[valores]); // Le pido que me traiga todas las propiedades y me las muestre en consola
