@@ -1,4 +1,4 @@
-// // Repaso
+// // // Repaso
 
 // const persona = {
 //   edad: 30, 
@@ -79,7 +79,7 @@
 
 // const miArray = [
 //   {
-//     id: 1,
+//     id: 1, 
 //     nombre: "Juan",
 //     apellido: "Etcheverry"
 //   },
@@ -96,31 +96,31 @@
 
 // For... of - nos permite recorrer el array de objetos y ejecutar un bloque codigo
 
-const productos = [
-  { id: 1, 
-    producto: "Arroz" 
-  },
-  { 
-    id: 2,  
-    producto: "Fideo" 
-  },
-  { id: 3,  
-    producto: "Pan" 
-  }
-];
+// const productos = [
+//   { id: 1, 
+//     producto: "Arroz" 
+//   },
+//   { 
+//     id: 2,  
+//     producto: "Fideo" 
+//   },
+//   { id: 3,  
+//     producto: "Pan" 
+//   }
+// ];
 
-// Exactamente como el for.. in, en este caso declaro una variable que me permite poder buscar las propiedades
-// que contienen los objetos de mi array
+// // Exactamente como el for.. in, en este caso declaro una variable que me permite poder buscar las propiedades
+// // que contienen los objetos de mi array
 
-for (const producto of productos) {
-    console.log(producto.id);
-    console.log(producto.producto);
-}
+// for (const producto of productos) {
+//     console.log(producto.id);
+//     console.log(producto.producto);
+// }
 
 // typeof nos permite saber el tipo de valor
 
-const ejemplo = "esto es un string";
-console.log(typeof ejemplo); // En consola me devuelve string
+// const ejemplo = true;
+// console.log(typeof ejemplo); // En consola me devuelve string
 
 
 // OTROS METODOS DE BUSQUEDA Y TRANSFORMACION
@@ -129,22 +129,26 @@ console.log(typeof ejemplo); // En consola me devuelve string
 
 const nombres     = ["Ana", "Ema", "Juan"];
 // estos es lo mismo que 
-const encontrado2 = nombres.find(elemento => elemento === "Ema"); //Encuentra "Ema"
+// const encontrado2 = nombres.find(elemento => elemento === "Ema"); //Encuentra "Ema"
 
-// hacer esto, es una "comprobacion enviada por parametro" que se hace para chequear la informacion
-const encontrado2 = nombres.find(function(elemento){
-  return elemento === "Ema"
-})
+// // hacer esto, es una "comprobacion enviada por parametro" que se hace para chequear la informacion
+// const encontrado2 = nombres.find(function(elemento){
+//   return elemento === "Ema"
+// })
 
-const encontrado3 = nombres.find(elemento => elemento === "Alan"); //undefined porque no existe en mi array
+// const encontrado3 = nombres.find(elemento => elemento === "Alan"); //undefined porque no existe en mi array
 
 
 // METODO FILTER - se usa para filtrar los valores de mi array transformandolo en un nuevo array con menos valores
 
-const filtro1 = nombres.filter(elemento => elemento.includes("n")); // me crea un array con los elemenos Ana y Juan
+// const filtro1 = nombres.filter(elemento => elemento.includes("n")); // me crea un array con los elemenos Ana y Juan
 
+// console.log(filtro1);
 
 // METODO MAP - se usa para modificar los valores de mi array original y crear uno nuevo con los nuevos valores
 
-const mapNombres = nombres.map(elemento => elemento.length); // La consola me va a mostrar un nuevo array con la cantidad de letras de cada nombre
-// es decir mapNombres = [3, 3, 4]
+// const mapNombres = nombres.map(elemento => elemento.length); // La consola me va a mostrar un nuevo array con la cantidad de letras de cada nombre
+// // es decir mapNombres = [3, 3, 4]
+
+
+// console.log(mapNombres);
