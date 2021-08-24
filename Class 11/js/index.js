@@ -72,12 +72,12 @@ function productosUIjQuery(productos, id){
 
 // DECLARACIÓN DE CLASE PRODUCTO
 class Producto {
-    constructor(id, nombre, precio,categoria) {
-            this.id = parseInt(id);
-            this.nombre = nombre;
-            this.precio = parseFloat(precio);
-            this.categoria = categoria;
-    }
+  constructor(id, nombre, precio,categoria) {
+          this.id = parseInt(id);
+          this.nombre = nombre;
+          this.precio = parseFloat(precio);
+          this.categoria = categoria;
+  }
 }
 
 //INSTANCIAR OBJETOS Y ASOCIAR A ARRAY GLOBAL
