@@ -59,6 +59,7 @@ function carritoUI(productos){
   // ASOCIAR EVENTOS A LA INTERFAZ GENERADA
   $(".btn-add").click(addCantidad);
   $(".btn-delete").click(eliminarCarrito);
+  $(".btn-restar").click(restarCantidad);
 
 }
 
@@ -66,9 +67,11 @@ function carritoUI(productos){
 // FUNCION PARA GENERAR LA ESTRUCTURA DEL REGISTO HTML
 function registroCarrito(producto){
   return `<p> ${producto.nombre} 
-          <span class="badge bg-warning">$ ${producto.precio}</span>
-          <span class="badge bg-dark">${producto.cantidad}</span>
+          <span class="badge bg-warning"> Pracio unitario: $ ${producto.precio}</span>
+          <span class="badge bg-dark"> Cantidad: ${producto.cantidad}</span>
+          <span class="badge bg-success"> Precio total: $ ${producto.subtotal()}</span>
           <a id="${producto.id}" class="btn btn-info btn-add">+</a>
+          <a id="${producto.id}" class="btn btn-warning btn-restar">-</a>
           <a id="${producto.id}" class="btn btn-danger btn-delete">x</a>
           </p>`
 }
@@ -92,9 +95,24 @@ function addCantidad() {
   let producto = carrito.find(p => p.id == this.id);
   producto.agregarCantidad(1);
   $(this).parent().children()[1].innerHTML = producto.cantidad;
-
+  $(this).parent().children()[2].innerHTML = producto.subtotal();
   // GUARDAR EN STORAGE
   localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+// MANEJADOR PARA SUMAR CANTIDAD
+function restarCantidad() {
+  let producto = carrito.find(p => p.id == this.id);
+  if(producto.cantidad > 1) {
+    producto.agregarCantidad(-1);
+
+    let registroUI = $(this).parent().children();
+    registroUI[1].innerHTML = producto.cantidad;
+    registroUI[2].innerHTML = producto.subtotal();
+
+    //GUARDAR EN STORAGE
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  }
 }
 
 

@@ -30,3 +30,18 @@ console.log(productos);
 productosUIjQuery(productos, '#productosContenedor');
 
 
+
+// SOLUCIONES POSIBLES
+
+$("#btn-oferta1").click(function(e){
+  $("#oferta1").slideDown(2000).slideUp(2000);
+})
+
+$("#oferta2").animate({
+  margin: '30px',
+  opacity: 0.4,
+  fontSize: "2em",
+  width: 500
+}, 2000).delay(1000).slideUp(1000);
+
+
