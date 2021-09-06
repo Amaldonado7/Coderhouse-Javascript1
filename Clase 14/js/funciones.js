@@ -56,10 +56,17 @@ function carritoUI(productos){
     $('#carritoProductos').append(registroCarrito(producto));
   }
 
+  //AGREGAR TOTAL
+  $("#carritoProductos").append(`<p id="totalCarrito"> TOTAL ${totalCarrito(productos)}</p>`);
+
+  //AGREGAR TOTAL
+  $("#carritoProductos").append(`<div id="divConfirmar" class="text-center"><button id="btnConfirmar" class="btn btn-success">CONFIRMAR</button></div>`);
+
   // ASOCIAR EVENTOS A LA INTERFAZ GENERADA
   $(".btn-add").click(addCantidad);
   $(".btn-delete").click(eliminarCarrito);
   $(".btn-restar").click(restarCantidad);
+  $("#btnConfirmar").click(confirmarCompra);
 
 }
 
@@ -118,12 +125,25 @@ function restarCantidad() {
 
 
 // FUNCION PARA RENDERIZAR UN SELECT USANDO UN ARRAY
-// function renderSelect(lista, id){
-//   //VACIAR EL CONTENIDO DE LA LISTA
-//   $(id).empty();
+function selectUI(lista, selector){
+  //VACIAR OPCIONES EXISTENTES
+  $(selector).empty();
 
-//   //GENERAMOS UN OPTION POR CADA ELEMENTO DE LA LISTA
-//   for (const item of lista) {
-//     $(id).append(`<option value='${item}'>${item}</option>`);
-//   }
-// }
+  //RECORRER LISTA Y AGREGAR UNA OPCION POR CADA ELEMENTO
+  lista.forEach(element => {
+    $(selector).append(`<option value="${element}">${element}</option>`)
+  });
+  $(selector).prepend(`<option value="TODOS" selected>TODOS</option>`);
+}
+
+function totalCarrito(carrito) {
+  console.log(carrito);
+  let total = 0;
+  carrito.forEach(p => total += p.subtotal());
+  return total.toFixed(2);
+}
+
+
+function confirmarCompra(){
+  
+}
