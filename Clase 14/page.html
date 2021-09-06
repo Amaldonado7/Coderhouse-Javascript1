@@ -8,48 +8,68 @@
 	</head>
 	<body>
 		<div class="container">
-			<h1>Mi ejemplo coderhouse</h1>
+			<h1>PLANTILLA CODERHOUSE 14</h1>
 			<hr>
-				<button id="btn-oferta1" class="btn btn-info">VER OFERTAS</button>
-				<div id="oferta1" class="jumbotron" style="display: none;">
-					<h1 class="display-4">Esto es una oferta</h1>
-					<p class="lead">Aca pueden ir los detaller de la oferta</p>
-					<hr class="my-4">
-					<p>Todos los derechos reservados</p>
-					<p class="lead">
-						<a class="btn btn-primary btn-lg"	href="#" role="button">Quiero saber más</a>
-					</p>
-				</div>
-			<hr>	
-			<div id="oferta2">OFERTA TEMPORAL</div>
+			<div class="row">
+					<div class="col-sm">
+							<div class="input-group mb-3">
+									<div class="input-group-prepend">  
+											<label class="input-group-text" for="filtroCategorias">Categorias</label>
+									</div>
+									<select class="custom-select" id="filtroCategorias"></select>
+							</div>
+					</div>
+					<!-- <div class="col-sm">
+							<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">Busqueda</span>
+									</div>
+									<input id="busquedaProducto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
+					</div> -->
+					<!-- <div class="col-sm">
+							<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">MIN</span>
+									</div>
+									<input id="minProducto" value="1" type="number" class="form-control inputPrecio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
+							<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroup-sizing-default">MAX</span>
+									</div>
+									<input id="maxProducto" value="200" type="number" class="form-control inputPrecio" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							</div>
+					</div> -->
+			</div>
 			<hr>
-			<select id="filtroCategorias">
-
-			</select>
 			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					CARRITO <span id="carritoCantidad" class="badge bg-light">0</span>
-				</button>
-				<div id="carritoProductos" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<!-- ACA SE GENERAN LOS ELEMENTOS DEL CARRITO -->
-				</div>
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					CARRITO <span id="carritoCantidad" class="badge badge-light">0</span>
+					</button>
+					<div id="carritoProductos" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<!--ACA SE GENERAN LOS ELEMENTOS DEL CARRITO-->
+					</div>
 			</div>
 			<hr>
-			<div id="productosContenedor" class="card-columns" style="display: none;">
-					<!-- ACA SE GENERAN LOS PRODUCTOS -->
-			</div>
-			<!-- <h2>Productos</h2>
-				<div id="productosContenedor">
-			</div>
-			<hr>
-			<h2>Cantidad de productos en el carrito</h2>
-				<div id="carritoCantidad">
-			</div>
-			<h2>Productos seleccionado</h2>
-				<div id="carritoProductos">
+			<!-- <div id="indicadorCarga" class="d-flex justify-content-center">
+					<div class="spinner-border" role="status">
+						<span class="sr-only">Loading...</span>
+					</div>
 			</div> -->
-		</div>
+			<div id="notificaciones">
+					
+			</div>
+			<hr>
+			<!--style="display: none;"-->
+			<div id="productosContenedor" class="card-columns" style="display: none;">
+					<!--ACA SE GENERAN LOS PRODUCTOS-->
+			</div>
+	</div>
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
 		<script src="js/globales.js"></script>
 		<script src="js/funciones.js"></script>
 		<script src="js/productos.js"></script>

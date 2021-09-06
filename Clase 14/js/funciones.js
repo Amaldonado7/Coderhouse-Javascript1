@@ -22,6 +22,9 @@ function comprarProducto(e){
   //PREVENIR ACTUALIZAR PAGINA AL PRESIONAR ENLACES
   e.preventDefault();
 
+  //PREVENIR LA PROPAGACION DEL EVENTO
+  e.stopPropagation();
+
   //OBTENER ID DEL BOTON PRESIONADO
   const idProducto   = e.target.id;
 
@@ -39,27 +42,27 @@ function comprarProducto(e){
   // GUARDAR EN STORAGE
   localStorage.setItem("carrito", JSON.stringify(carrito));
 
-  //GENERAR SALIDA PRODUCTO
+  // GENERAR SALIDA PRODUCTO
   carritoUI(carrito);
 }
 
 
 // FUNCION PARA RENDERIZAR LA INTERFAZ DEL CARRITO
 function carritoUI(productos){
-  //CAMBIAR INTERIOR DEL INDICADOR DE CANTIDAD DE PRODUCTOS;
+  // CAMBIAR INTERIOR DEL INDICADOR DE CANTIDAD DE PRODUCTOS;
   $('#carritoCantidad').html(productos.length);
 
-  //VACIAR EL INTERIOR DEL CUERPO DEL CARRITO;
+  // VACIAR EL INTERIOR DEL CUERPO DEL CARRITO;
   $('#carritoProductos').empty();
 
   for (const producto of productos) {
     $('#carritoProductos').append(registroCarrito(producto));
   }
 
-  //AGREGAR TOTAL
+  // AGREGAR TOTAL
   $("#carritoProductos").append(`<p id="totalCarrito"> TOTAL ${totalCarrito(productos)}</p>`);
 
-  //AGREGAR TOTAL
+  // AGREGAR BOTON CONFIRMAR
   $("#carritoProductos").append(`<div id="divConfirmar" class="text-center"><button id="btnConfirmar" class="btn btn-success">CONFIRMAR</button></div>`);
 
   // ASOCIAR EVENTOS A LA INTERFAZ GENERADA
@@ -67,7 +70,6 @@ function carritoUI(productos){
   $(".btn-delete").click(eliminarCarrito);
   $(".btn-restar").click(restarCantidad);
   $("#btnConfirmar").click(confirmarCompra);
-
 }
 
 
@@ -90,9 +92,9 @@ function eliminarCarrito(e) {
   let posicion = carrito.findIndex(p => p.id == e.target.id);
   carrito.splice(posicion, 1);
   console.log(carrito);
-
+  // GENERAR NUEVAMENTE INTERFAZ
   carritoUI(carrito);
-
+  // GUARDAR EN STORAGE EL NUEVO CARRITO
   localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
@@ -103,11 +105,13 @@ function addCantidad() {
   producto.agregarCantidad(1);
   $(this).parent().children()[1].innerHTML = producto.cantidad;
   $(this).parent().children()[2].innerHTML = producto.subtotal();
+  //MODIFICAR TOTAL
+  $("#totalCarrito").html(`TOTAL ${totalCarrito(carrito)}`);
   // GUARDAR EN STORAGE
   localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-// MANEJADOR PARA SUMAR CANTIDAD
+// MANEJADOR PARA RESTAR CANTIDAD
 function restarCantidad() {
   let producto = carrito.find(p => p.id == this.id);
   if(producto.cantidad > 1) {
@@ -117,6 +121,9 @@ function restarCantidad() {
     registroUI[1].innerHTML = producto.cantidad;
     registroUI[2].innerHTML = producto.subtotal();
 
+    //MODIFICAR TOTAL
+    $("#totalCarrito").html(`TOTAL ${totalCarrito(carrito)}`);
+
     //GUARDAR EN STORAGE
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }
@@ -124,7 +131,7 @@ function restarCantidad() {
 
 
 
-// FUNCION PARA RENDERIZAR UN SELECT USANDO UN ARRAY
+// FUNCION PARA GENERAR OPCIONES DE UN SELECT
 function selectUI(lista, selector){
   //VACIAR OPCIONES EXISTENTES
   $(selector).empty();
@@ -136,6 +143,7 @@ function selectUI(lista, selector){
   $(selector).prepend(`<option value="TODOS" selected>TODOS</option>`);
 }
 
+// FUNCION PARA OBTENER EL PRECIO TOTAL DEL CARRITO
 function totalCarrito(carrito) {
   console.log(carrito);
   let total = 0;
@@ -143,7 +151,7 @@ function totalCarrito(carrito) {
   return total.toFixed(2);
 }
 
-
+// FUNCION PARA ENVIAR AL BACKEND LA ORDEN DE PROCESAMIENTO DE COMPRA
 function confirmarCompra(){
-  
+
 }

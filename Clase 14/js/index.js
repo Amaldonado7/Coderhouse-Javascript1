@@ -5,14 +5,13 @@ $(document).ready(function(){
     for(const literal of arrayLiterales) {
       carrito.push(new Producto(literal.id, literal.nombre, literal.precio, literal.categoria, literal.cantidad));
     }
-    console.log(carrito);
     carritoUI(carrito);
   }
   $(".dropdown-menu").click(function(e){
     e.stopPropagation();
   });
 
-  //CARGAR DATA DE ORIGEN LOCAL
+  // CARGA ASINCRONICA DE INFORMACION DE PRODUCTOS DE ORIGEN LOCAL (producto.json)
   $.get("data/producto.json", function(datos, estado){
     console.log(datos);
     console.log(estado);
@@ -22,49 +21,36 @@ $(document).ready(function(){
       }
     }
     console.log(productos);
+    // GENERAR INTERFAZ DE PRODUCTOS CON UNA FUNCION
     productosUIjQuery(productos, '#productosContenedor');
   });
 
 });
 
-//INSTANCIAR OBJETOS Y ASOCIAR A ARRAY GLOBAL
-// productos.push(new Producto(1, "PANIFICADO1", 65, categorias[0]));
-// productos.push(new Producto(2, "PANIFICADO2", 130, categorias[0]));
-// productos.push(new Producto(3, "PANIFICADO3", 150, categorias[0]));
-// productos.push(new Producto(4, "FIAMBRE1", 60, categorias[1]));
-// productos.push(new Producto(5, "FIAMBRE2", 60, categorias[1]));
-// productos.push(new Producto(6, "FIAMBRE3", 60, categorias[1]));
-// productos.push(new Producto(7, "LACTEO1", 75, categorias[2]));
-// productos.push(new Producto(8, "LACTEO2", 75, categorias[2]));
-// productos.push(new Producto(9, "LACTEO3", 75, categorias[2]));
-// productos.push(new Producto(10, "CARNE1", 100, categorias[3]));
-// productos.push(new Producto(11, "CARNE2", 100, categorias[3]));
-// productos.push(new Producto(12, "CARNE3", 100, categorias[3]));
-// console.log(productos);
-
-
-//GENERAR INTERFAZ DE PRODUCTOS CON UNA FUNCION
-// productosUIjQuery(productos, '#productosContenedor');
-
+// GENERAR OPCIONES PARA FILTRAR POR CATEGORIA
 selectUI(categorias, "#filtroCategorias");
 
+// DEFINIR EVENTOS SOBRE EL SELECT GENERADO
 $('#filtroCategorias').change(function(e) {
+  // obtenemos el nuevo valor del select
   const value = this.value;
 
   $('#productosContenedor').fadeOut(600, function(){
+    // el filtro se realiza una vez oculto el contenedor
     if(value == 'TODOS'){
       productosUIjQuery(productos, '#productosContenedor');
     } else {
       const filtrados = productos.filter(producto => producto.categoria == value);
       productosUIjQuery(filtrados, '#productosContenedor');
     }
+    // mostrar una vez generados los productos
     $("#productosContenedor").fadeIn();
   })
 });
 
 
 
-// SOLUCIONES POSIBLES
+// SOLUCION DEL EJERCICIO OFERTA
 
 $("#btn-oferta1").click(function(e){
   $("#oferta1").slideDown(2000).slideUp(2000);
