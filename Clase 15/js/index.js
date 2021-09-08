@@ -24,6 +24,7 @@ $(document).ready(function(){
     // GENERAR INTERFAZ DE PRODUCTOS CON UNA FUNCION
     productosUIjQuery(productos, '#productosContenedor');
   });
+
 });
 
 // GENERAR OPCIONES PARA FILTRAR POR CATEGORIA
